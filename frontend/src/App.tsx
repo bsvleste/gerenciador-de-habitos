@@ -1,11 +1,14 @@
-import  './styles/global.css'
+import { Container } from './components/Container'
+import { Header } from './components/Header'
+import { SummaryTable } from './components/SummaryTable'
+import './styles/global.css'
 
 export function App() {
   return (
-    <div className=''>
-     <h1>Gerenciador</h1>
-     <p>Ola meu bem</p>
-    </div>
+    <Container>
+      <Header />
+      <SummaryTable />
+    </Container>
   )
 }
 
