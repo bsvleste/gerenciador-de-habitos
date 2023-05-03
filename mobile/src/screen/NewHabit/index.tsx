@@ -1,17 +1,33 @@
 import { useState } from 'react'
-import { View, Text, ScrollView, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, TextInput, TouchableOpacity, Alert } from 'react-native'
 import { BackButton } from '../../components/BackButton'
 import { Checkbox } from '../../components/Chekbox'
 import { Feather } from '@expo/vector-icons'
 import colors from 'tailwindcss/colors'
+import { api } from '../../libs/axios'
 const availableWeekDays = ['Domingo', 'Segunda-feria', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado']
 export function NewHabit() {
+  const [title, setTitle] = useState('')
   const [weekDays, setWeekDays] = useState<number[]>([])
   function handleToggleWeekDay(weekDaysIndex: number) {
     if (weekDays.includes(weekDaysIndex)) {
       setWeekDays(prevState => prevState.filter(weekDay => weekDay != weekDaysIndex))
     } else {
       setWeekDays(prevState => [...prevState, weekDaysIndex])
+    }
+  }
+  async function handleCreateNewHabit() {
+    try {
+      if (!title.trim() || weekDays.length === 0) {
+        Alert.alert("Novo Habito", "Informe o titulo do habito e escolha o periodo")
+      }
+      await api.post('/habits', { title, weekDays })
+      setTitle('')
+      setWeekDays([])
+      Alert.alert("Novo Habito", "Habito criado com sucesso")
+    } catch (error) {
+      Alert.alert("ops!", "Erro ao cadastrar novo habito tente novamente")
+      console.log(error)
     }
   }
   return (
@@ -32,6 +48,8 @@ export function NewHabit() {
           placeholder='ex: Passear com o Dog, Correr, etc...'
           placeholderTextColor={colors.zinc[400]}
           className='h-12 pl-4 rounded-lg mt-3 bg-zinc-800 text-white border-2 border-zinc-700 focus:border-2 focus:border-green-600'
+          onChangeText={setTitle}
+          value={title}
         />
         <Text className='font-semibold mt-4 mb-3 text-white text-base'>Qual a recorrencia</Text>
         {
@@ -44,6 +62,7 @@ export function NewHabit() {
           ))
         }
         <TouchableOpacity
+          onPress={handleCreateNewHabit}
           className='w-full items-center mt-6 justify-center flex-row h-14 bg-green-600 rounded-lg'
         >
           <Feather

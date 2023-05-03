@@ -5,7 +5,6 @@ const app = Fastifay();
 app.register(cors)
 app.register(appRoutes)
 
-
 app.listen({
     port:3333
 }).then(()=>console.log('server is on fire'))

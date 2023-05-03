@@ -23,7 +23,7 @@ export function Habits() {
       >
         <Text className="mt-6 text-zinc-400 font-semibold text-base lowercase">{dayOfWeek}</Text>
         <Text className="text-white font-extrabold text-3xl">{daysAndMonth}</Text>
-        <ProgressBar progress={80} />
+        <ProgressBar progress={30} />
         <View className="mt-6">
           <Checkbox text="Correr" checked />
           <Checkbox text="Passear Com o Dog" />
