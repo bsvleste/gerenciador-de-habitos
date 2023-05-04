@@ -24,14 +24,13 @@ export function NewHabitForm() {
       title,
       weekDays
     })
-
     alert("Habito Criado com succeso")
     setTitle('')
     setWeekdays([])
   }
   function handleToggleWeekDays(weekDay: number) {
     if (weekDays.includes(weekDay)) {
-      const weekDaysWithRomoveOne = weekDays.filter(day => day === weekDay)
+      const weekDaysWithRomoveOne = weekDays.filter(day => day !== weekDay)
       setWeekdays(weekDaysWithRomoveOne)
     } else {
       const weekDaysWithAddOne = [...weekDays, weekDay]
@@ -44,7 +43,7 @@ export function NewHabitForm() {
         Qual o seu comprometimento?
       </label>
       <input
-        className="p-4 rounded-lg bg-zinc-800 text-white placeholder:text-zinc-400"
+        className="focus:ring-offset-2 focus:ring-offset-zinc-800  focus:outline-none focus:ring-2 focus:ring-violet-600 p-4 rounded-lg bg-zinc-800 text-white placeholder:text-zinc-400"
         type="text"
         id="title"
         onChange={event => setTitle(event.target.value)}
@@ -55,16 +54,16 @@ export function NewHabitForm() {
       <label htmlFor="" className="font-semibold leading-tight mt-4">
         Qual a recorrência
       </label>
-      <div className='mt-3  flex flex-col gap-2 '>
+      <div className='mt-3 flex flex-col gap-2 '>
         {
           availableWeekDays.map((weekDay, index) => (
             <Checkbox.Root
               checked={weekDays.includes(index)}
               onCheckedChange={() => handleToggleWeekDays(index)}
-              key={index}
-              className='flex items-center  gap-3 group'
+              key={weekDay}
+              className='flex items-center  gap-3 group focus:outline-none'
             >
-              <div className='h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-[1px] border-zinc-500 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500'>
+              <div className='group-focus:ring-offset-2 group-focus:ring-offset-zinc-800  group-focus:ring-2 group-focus:ring-violet-600 h-8 w-8 rounded-lg flex items-center justify-center bg-zinc-900 border-[1px] border-zinc-500 group-data-[state=checked]:bg-green-500 group-data-[state=checked]:border-green-500 transition-colors'>
                 <Checkbox.Indicator>
                   <Check size={20} />
                 </Checkbox.Indicator>
@@ -77,7 +76,7 @@ export function NewHabitForm() {
         }
       </div>
       <button
-        className="mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500"
+        className="focus:ring-offset-2 focus:ring-offset-zinc-800  focus:outline-none focus:ring-2 focus:ring-violet-600 transition-colors mt-6 rounded-lg p-4 flex items-center justify-center gap-3 font-semibold bg-green-600 hover:bg-green-500"
         type="submit"
       >
         <Check size={20} weight="bold" />

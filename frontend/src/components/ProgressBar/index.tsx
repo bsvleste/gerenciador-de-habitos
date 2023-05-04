@@ -8,8 +8,7 @@ export function ProgressBar({ progress = 0 }: ProgressBarProps) {
   return (
     <Progress.Root className='h-3 rounded-xl bg-zinc-700 w-full mt-4' value={progress}>
       <Progress.Indicator
-
-        className={clsx('h-3 rounded-xl', {
+        className={clsx('h-3 rounded-xl transition-all ', {
           "bg-transparent": progress === 0,
           "bg-violet-400 border-violet-200": progress > 0 && progress < 20,
           "bg-violet-500 border-violet-400": progress >= 20 && progress < 40,

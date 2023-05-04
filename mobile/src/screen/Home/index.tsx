@@ -4,9 +4,9 @@ import { HabitDays, DAY_SIZE } from '../../components/HabitDays'
 import { generateDatesFromYearBeginning } from '../../utils/generate-dates-from-year-benning'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
-import { Loading } from '../../Loading'
 import { api } from '../../libs/axios'
 import dayjs from 'dayjs'
+import { Loading } from '../../components/Loading'
 
 const weekDays = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
 const datesFromYearsStart = generateDatesFromYearBeginning()

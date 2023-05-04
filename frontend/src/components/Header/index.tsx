@@ -10,7 +10,7 @@ export function Header() {
       <img src={logo} alt="habit" />
       <Dialog.Root>
         <Dialog.Trigger
-          className='border border-violet-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-violet-300'
+          className='focus:ring-offset-2 focus:ring-offset-background  focus:outline-none focus:ring-2 focus:ring-violet-600 transition-colors border border-violet-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-violet-300'
           type='button'>
           <Plus size={20} className="text-violet-500" />
           Novo habito
@@ -25,7 +25,7 @@ export function Header() {
               Criar hábito
             </Dialog.Title>
             <NewHabitForm />
-            <Dialog.Close className='absolute right-6 top-6 text-zinc-400 hover:text-zinc-200'>
+            <Dialog.Close className='absolute rounded-sm right-6 top-6 text-zinc-400 hover:text-zinc-200 focus:ring-offset-2 focus:ring-offset-zinc-800  focus:outline-none focus:ring-2 focus:ring-violet-600 '>
               <X size={24} aria-label='Fechar' />
             </Dialog.Close>
           </Dialog.Content>
